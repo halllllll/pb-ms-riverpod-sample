@@ -1,4 +1,4 @@
-# some sample champloo
+# some samples champloo
 
 Flutterでいくつかの要素を詰め込んだサンプルおよびメモ
 
@@ -57,6 +57,7 @@ class AuthNotifier extends Notifier<RecordAuth?> {
     return null;
   }
   // 略
+}
 ```
 
 ## MVVM using Riverpod
@@ -126,4 +127,7 @@ class AuthNotifier extends Notifier<RecordAuth?> {
     );
     _pb = PocketBase(mac.pick("pb_endpoint"), authStore: store);
   }
+
+  // 略
+}
 ```

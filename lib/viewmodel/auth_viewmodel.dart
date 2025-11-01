@@ -63,6 +63,20 @@ class AuthNotifier extends Notifier<RecordAuth?> {
     } catch (e) {
       throw Exception("ログインに失敗しました: $e");
     } finally {
+      /**
+       * 公式サイトには次のようにあるが、
+       * https://pocketbase.io/docs/authentication/#:~:text=vendor%20url%20to%20authenticate,app%20and%20realtime%20connection%20to
+        
+        > This method initializes a one-off realtime subscription and will
+        > call the provided urlCallback with the OAuth2 vendor url to authenticate.
+        > Once the external OAuth2 sign-in/sign-up flow is completed, the browser
+        > window will be automatically closed and the OAuth2 data sent back
+        > to the user through the previously established realtime connection.
+        > or use flutter_custom_tabs to make the transitions between native and web content more seamless
+      
+       *  なんか自分の環境だと認証成功 or 失敗画面が閉じなかったので、明示的に閉じるようにする
+       * 
+       */
       await closeInAppWebView();
     }
   }
